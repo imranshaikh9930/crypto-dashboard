@@ -27,7 +27,7 @@ const News = ()=>{
         <div>
              <h2 className="text-xl font-semibold mb-3">📰 News</h2>
         {data && (
-            <div className="overflow-x-auto flex flex-wrap gap-6 py-6 justify-start ">
+            <div className="overflow-x-auto flex flex-wrap gap-6 py-6 justify-start bg-gray-800 ">
               {data?.results?.slice(0, 5).map((article, index) => (
                 <div key={index} 
                      className="bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300 min-w-[280px] sm:min-w-[300px] md:min-w-[350px] max-w-sm">
