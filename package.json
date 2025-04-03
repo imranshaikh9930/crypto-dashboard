@@ -5,7 +5,7 @@
   "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).",
   "license": "ISC",
   "author": "imran",
-  "type": "commonjs",
+  "type": "module",
   "main": "postcss.config.js",
   "scripts": {
     "dev": "next dev --turbopack",

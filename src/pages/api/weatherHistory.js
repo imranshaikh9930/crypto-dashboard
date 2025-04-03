@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Step 1: Get latitude & longitude for the city
+      
         const geoResponse = await fetch(
             `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`
         );
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
             return res.status(500).json({ error: "Failed to fetch weather data" });
         }
 
-        // ✅ Process the forecast data (Next 5 days)
+
         const forecast = weatherData.list.map((entry) => ({
             date: new Date(entry.dt * 1000).toLocaleDateString(),
             temp: entry.main.temp,
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
             condition: entry.weather[0]?.description || "N/A",
         }));
 
-        console.log("Processed Forecast Data:", forecast);
+        // console.log("Processed Forecast Data:", forecast);
         res.status(200).json(forecast);
     } catch (error) {
         console.error("Error fetching weather history:", error);

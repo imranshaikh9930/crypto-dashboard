@@ -2,6 +2,8 @@ import { fetchNews } from '@/store/newsSlice'
 import React,{useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import Loader from './Loader';
+import defaultImage from "../../public/network-connection-graphic-overlay-background-computer-screen.jpg";
+
 
 
 const News = ()=>{
@@ -31,11 +33,15 @@ const News = ()=>{
                      className="bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300 min-w-[280px] sm:min-w-[300px] md:min-w-[350px] max-w-sm">
                   {/* News Image */}
                   {article?.image_url && (
-                   <img 
-                   src={article?.image_url || "/network-connection-graphic-overlay-background-computer-screen.jpg"} 
-                   alt="News Image" 
-                   className="w-full h-40 object-cover rounded-lg mb-3"
-                 />
+                <img 
+                src={article?.image_url && article.image_url.trim() !== "" ? article.image_url : defaultImage} 
+                alt="News Image" 
+                className="w-full h-40 object-cover rounded-lg mb-3"
+                onError={(e) => {
+                  e.target.onerror = null; // Infinite loop avoid karne ke liye
+                  e.target.src = defaultImage;
+                }}
+              />
                   )}
           
                   {/* News Title */}
